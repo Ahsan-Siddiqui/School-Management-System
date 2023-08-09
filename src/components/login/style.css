@@ -1,0 +1,86 @@
+
+.add-expense-btn button
+{
+    background-color: #d1d1d1;
+    color: #000000;
+    font-weight: bold;
+    margin: 1rem .3rem;
+    padding: 1rem .3rem;
+    border: none;
+    border-radius: 8px;
+    width: 90%;
+    transition: .5s;
+    font-size: 20px;
+}
+.add-expense-btn button:hover
+{
+    background-color: #000;
+    color: #d1d1d1;
+    cursor: pointer;
+}
+.input-controls
+{
+    padding:4%;
+    width: 100%;
+    color: #fff;
+}
+.input-control
+{
+    width: 100%;
+    margin: .5rem 0;
+}
+.input-control label
+{
+ display: block;
+ font-weight: bold;
+ margin-bottom: .4rem;
+}
+.input-control input
+{
+ padding: 1rem 1rem;
+ border: none;
+ border-radius: 8px;
+ background-color: #eee;
+ width: 86%;   
+ font-size: 20px;
+}
+.backgroundImage
+{
+    background: url('../../assets/images/mainbackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}
+.loginForm
+{
+    width: 600px;
+    /* height: 200px; */
+    margin: 0 aut;
+    padding: 70px;
+    float:  right;
+    background-position: center;
+}
+.cardColor{
+    
+    background-color: #333;
+}
+.heading{
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0px;
+}
+@media screen and (max-width: 992px) {
+    .loginForm
+    {
+        width: 90%;
+        margin: 50% auto;
+    }
+    .input-control label,
+    .input-control input
+{
+ font-size: 25px;
+}
+.backgroundImage
+{
+    background: none;
+}
+  }
