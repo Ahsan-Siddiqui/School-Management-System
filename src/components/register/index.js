@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import './style.css'
+import './register.css'
 import Card from '../ui/card';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 const RegisterForm = () => {
     const history = useHistory()
     const [user,setUser] = useState({
@@ -46,7 +47,7 @@ const RegisterForm = () => {
     return (
         <div className='backgroundImage'>
             {console.log("user",user)}
-        <div className='loginForm'>
+        <div className='registerForm'>
             <h1 className='heading'>New User</h1>
         <Card className="cardColor">
             <div className='input-controls'>
@@ -54,7 +55,7 @@ const RegisterForm = () => {
             <div className='input-control'>
                 <label htmlFor='name'>Name</label>
                 <input 
-                type="text" 
+                type="name" 
                 name="name"
                 id="name" 
                 value={user.name}
@@ -109,7 +110,7 @@ const RegisterForm = () => {
                 </select>
             </div>
             <div className='input-control add-expense-btn'>
-                <button type='submit'>Register</button>
+                <Button type='submit'>Register</Button>
             </div>
             <p>Already SignIn ? <a onClick={()=>history.push('/login')} style={{color:'#4ca0f4',cursor:'pointer'}}>Login</a></p>
                 </form>

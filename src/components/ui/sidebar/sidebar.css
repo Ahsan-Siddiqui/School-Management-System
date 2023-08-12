@@ -1,5 +1,5 @@
 .sidebar {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     height: 100%;
     position: fixed;
     top: 0;
@@ -10,12 +10,22 @@
     overflow-y: auto;
     z-index: 1;
   }
-  
+  /* .col
+  {padding: 0!important;} */
+  .list-group a:hover
+  {
+    background-color: #333;
+    color: #f0f0f0;
+    cursor: pointer;
+  }
   .menu {
     list-style: none;
     padding: 0;
   }
-  
+  .list-group-item:last-child
+  {
+    border: none;
+  }
   .menu li {
     margin-bottom: 10px;
   }
@@ -30,7 +40,7 @@
   }
   
   .menu li a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
   }
   
   /* Media query for responsiveness */

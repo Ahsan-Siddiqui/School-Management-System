@@ -22,3 +22,29 @@
     outline: none;
     cursor: pointer;
 }
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Makes the layout cover the full viewport height */
+  }
+  
+  .main-container {
+    display: flex;
+    flex: 1; /* Takes up remaining space */
+  }
+  
+  .main-content {
+    flex: 1; /* Takes up remaining space */
+    padding: 20px;
+  }
+  .header {
+    height: 60px;
+    background-color: #eee;
+  }
+  .addBackBtn
+  {
+    width: 200px;
+    float: right;
+    margin: 30px;
+    padding: 10px;
+  }

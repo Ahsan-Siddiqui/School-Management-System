@@ -1,15 +1,28 @@
-import React,{useEffect} from 'react'
-import './style.css'
-import Sidebar from '../../ui/sidebar'
-import Header from '../../ui/header'
-import Footer from '../../ui/footer'
-const Classes = ({setLoginUser}) => {
+import React,{useState } from 'react'
+import './classes.css'
+import ClassForm from './ClassForm'
+import ClassList from './classList'
+import { Button, Container } from 'react-bootstrap';
+import Navbar from '../../ui/navbar'
+
+const Classes = ({Toggle}) => {
+  const [showForm, setShowForm] = useState(false);
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
   return (
-    <div>
-        <Sidebar setLoginUser={setLoginUser}/>
-        <Header/>
-      <Footer/>
-        </div>
+
+    <div className=' px-3'>    
+    <Navbar Toggle={Toggle}/>
+  <Button variant="primary" className='addBackBtn' onClick={toggleForm}>{showForm ? 'Back to List' : 'Add Class'}</Button>
+  {showForm ? 
+  <div className='container-fluid col-md-12'>
+  <ClassForm /> 
+  </div>
+  : 
+  <ClassList/>
+  }
+  </div>
   )
 }
 

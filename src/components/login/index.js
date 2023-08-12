@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import './style.css'
+import './login.css'
 import Card from '../ui/card';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 const LoginForm = ({setLoginUser}) => {
     const history = useHistory()
     const [user,setUser] = useState({
@@ -22,16 +23,22 @@ const LoginForm = ({setLoginUser}) => {
             await   axios.post('http://localhost:8080/api/auth',user)
             .then(res => {
                 alert(res.data.msg)
+                const saveToken = res.data.token
                 const userDetail = res.data.payload.user
-                localStorage.setItem('userData', JSON.stringify(userDetail));
-                // console.log('userData',userDetail)
-                setLoginUser(userDetail)
+                localStorage.setItem('userData', JSON.stringify({userDetail,saveToken}));
+                setLoginUser({userDetail,saveToken})
                 history.push('/')
             })
            
         }
         catch (error) {
-            alert(error.response.data.msg)
+            if (error.response && error.response.data && error.response.data.msg) {
+                // Check if the error response contains the specific condition
+                alert(error.response.data.msg);
+              } else {
+                // Display a default error message when the condition is not met
+                alert("Server Not Connected.");
+              }
           }
 
     }
@@ -65,7 +72,7 @@ const LoginForm = ({setLoginUser}) => {
                 />
             </div>
             <div className='input-control add-expense-btn'>
-                <button type='submit'>Login</button>
+                <Button type='submit'>Login</Button>
             </div>
                 <p>New user ? <a onClick={()=>history.push('/register')} style={{color:'#4ca0f4',cursor:'pointer'}}>Sign up</a></p>
                 </form>

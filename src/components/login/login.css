@@ -1,14 +1,14 @@
 
 .add-expense-btn button
 {
-    background-color: #d1d1d1;
+    background-color: #333;
     color: #000000;
     font-weight: bold;
     margin: 1rem .3rem;
     padding: 1rem .3rem;
     border: none;
     border-radius: 8px;
-    width: 90%;
+    width: 98%;
     transition: .5s;
     font-size: 20px;
 }
@@ -41,29 +41,9 @@
  border: none;
  border-radius: 8px;
  background-color: #eee;
- width: 86%;   
+ width: 100%;   
  font-size: 20px;
 }
-.select-container {
-    /* margin: 20px; */
-    font-family: Arial, sans-serif;
-  }
-  
-  .custom-select {
-    padding: 1rem 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #eee;
-    width: 90%;   
-    font-size: 20px;
-  }
-  
-  .custom-select:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-  
 .backgroundImage
 {
     background: url('../../assets/images/mainbackground.jpg') no-repeat center center fixed;

@@ -8,14 +8,14 @@
     padding: 1rem .3rem;
     border: none;
     border-radius: 8px;
-    width: 90%;
-    transition: .5s;
+    width: 98%;
+    transition: .2s;
     font-size: 20px;
 }
 .add-expense-btn button:hover
 {
-    background-color: #000;
-    color: #d1d1d1;
+    background-color: #0d6efd;
+    color: #fff;
     cursor: pointer;
 }
 .input-controls
@@ -41,27 +41,57 @@
  border: none;
  border-radius: 8px;
  background-color: #eee;
- width: 86%;   
+ width: 100%;   
  font-size: 20px;
 }
+.select-container {
+    /* margin: 20px; */
+    font-family: Arial, sans-serif;
+  }
+  
+  .custom-select {
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #eee;
+    width: 100%;   
+    font-size: 20px;
+  }
+  
+  .custom-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
 .backgroundImage
 {
     background: url('../../assets/images/mainbackground.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+    width: 100vw;
 }
 .loginForm
 {
     width: 600px;
     /* height: 200px; */
-    margin: 0 aut;
+    margin: 0 auto;
     padding: 70px;
+    float:  right;
+    background-position: center;
+}
+.registerForm
+{
+    width: 600px;
+    /* height: 200px; */
+    margin: 0 auto;
+    padding: 0px 70px;
     float:  right;
     background-position: center;
 }
 .cardColor{
     
-    background-color: #333;
+    background-color: #333 !important;
 }
 .heading{
     font-weight: bold;
