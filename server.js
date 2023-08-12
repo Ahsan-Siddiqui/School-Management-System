@@ -13,7 +13,8 @@ app.use('/api/users',require('./routes/users'))
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/contacts',require('./routes/contacts'))
 app.use('/api/classes',require('./routes/classes'))
-
+app.use('/api/Student',require('./routes/student'))
+app.use('/api/Teacher',require('./routes/teacher'))
 app.use('/',(req,res)=>{
     res.send("Welcome to the Student Management App")
 })

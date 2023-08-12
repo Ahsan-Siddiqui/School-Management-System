@@ -1,8 +1,9 @@
 const express = require("express")
 const auth = require('../middlewares/auth')
 const {check,validationResult} = require('express-validator')
-const User = require('../model/User')
+const Teacher = require('../model/Teacher')
 const Class = require('../model/Classes')
+const Student = require("../model/Student")
 const router = express.Router()
 // @route GET /api/contacts
 // @desc  get all contacts
@@ -11,7 +12,21 @@ const router = express.Router()
 router.get("/", auth, async (req, res) => {
     try {
       const classes = await Class.find().sort({ createdAt: -1 });
-      res.json(classes);
+      const classesWithTeacherAndStudentsNames = await Promise.all(
+        classes.map(async (cls) => {
+            const teacher = await Teacher.findById(cls.teacherAssign[0]);
+            const teacherName = teacher ? teacher.name : 'Unknown Teacher';
+            const students = await Promise.all(
+              cls.studentsEnroll.map(async (studentId) => {
+                const student = await Student.findById(studentId);
+                return student ? student.name : 'Unknown Student';
+              })
+            );
+            return { ...cls._doc, teacherName, studentsNames: students  };
+        })
+    );
+
+    res.json(classesWithTeacherAndStudentsNames);
     } catch (err) {
       console.error(err.message);
       res.status(500).json({
@@ -29,9 +44,12 @@ router.post(
     "/",
     [
       auth,
-      [check('className', 'Please enter class name').exists()],
-      [check('instructor', 'Please enter instructor name').exists()],
-      [check('schedule', 'Please enter class schedule').exists()],
+      [check('gradeName', 'Please enter Grade Name').exists()],
+      [check('gradeId', 'Please enter Grade as Id').exists()],
+      [check('teacherAssign', 'Please select teacher who assign the class').exists()],
+      [check('schedule', 'Please enter class date and time').exists()],
+      [check('room', 'Please enter room number').exists()],
+      [check('studentsEnroll', 'Please select students for this class').exists()],
     ],
     async (req, res) => {
       const errors = validationResult(req);
@@ -43,13 +61,10 @@ router.post(
         msg:errorMessages[0]
         });
       }
-      const { className, instructor, schedule, room } = req.body;
+      const { gradeName,gradeId, teacherAssign, schedule, room,studentsEnroll } = req.body;
       try {
         const newClass = new Class({
-          className,
-          instructor,
-          schedule,
-          room,
+          gradeName,gradeId, teacherAssign, schedule, room,studentsEnroll
         });
         await newClass.save();
         res.json(newClass);
