@@ -17,6 +17,10 @@ const userSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    approved: {
+        type: Boolean,
+        default: false // New field for approval status
+    },
     createAt:{
         type:Date,
         default:Date.now()

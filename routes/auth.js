@@ -53,6 +53,12 @@ async (req,res)=>{
                 msg:'User with this email does not exist'
             })
         }
+        if (!user.approved && user.role !== 'admin') {
+            return res.status(401).json({
+                status: 401,
+                msg: 'User not approved by admin'
+            });
+        }
         const isMatch = await bcrypt.compare(password,user.password);
         if(!isMatch){
             return res.status(400).json({
