@@ -22,11 +22,7 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> origin/backend
       const { studentId, courseId } = req.body;
 
       const student = await Student.findById(studentId);
