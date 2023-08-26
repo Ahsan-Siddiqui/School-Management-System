@@ -1,9 +1,14 @@
 const mongoose = require('mongoose')
 const contactSchema = new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"users"
-    },
+    // user:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:"users"
+    // },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: true,
+      },
     firstname : {
         type:String,
         // required:true
@@ -74,6 +79,8 @@ const contactSchema = new mongoose.Schema({
         type:Number,
         // required:true
     },
+    // courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }], 
+
     createdAt:{
         type:Date,
         default:Date.now()
