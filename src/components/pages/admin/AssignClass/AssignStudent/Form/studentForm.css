@@ -1,0 +1,133 @@
+.commonForm {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-color: #f5f5f5; */
+  }
+.commonFormContainer h1
+  {
+    text-align: center;
+  }
+.commonFormContainer
+{
+  margin: 20px auto;
+  /* padding: 20px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+
+.custom-select-checkboxes {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.select-header {
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.checkbox-options {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.checkbox-label {
+  display: block;
+  margin: 4px 0;
+}
+
+.checkbox-label input {
+  margin-right: 8px;
+}
+.dropdown-checkbox {
+  position: relative;
+}
+
+.dropdown-toggle {
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  width: 100%;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  display: none;
+}
+
+.dropdown-checkbox.open .dropdown-options {
+  display: block;
+}
+
+.checkbox-label {
+  display: block;
+  padding: 8px;
+}
+
+.checkbox-label input {
+  margin-right: 8px;
+}
+.dropdown-toggle {
+  /* ... existing styles ... */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #333 transparent transparent transparent;
+  transition: transform 0.2s ease-in-out;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.student-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-name {
+  flex: 1;
+}
+
+.float-right {
+  float: right;
+  height: 22px;
+}

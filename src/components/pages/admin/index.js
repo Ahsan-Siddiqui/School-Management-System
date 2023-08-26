@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import './home.css'
+import './admin.css'
 import Navbar from '../../ui/navbar'
-const Home = ({Toggle}) => {
+const Admin = ({Toggle}) => {
   const getUser = localStorage.getItem("userData");
   const users = JSON.parse(getUser);
   const authToken = users.saveToken;
@@ -11,28 +11,28 @@ const Home = ({Toggle}) => {
   useEffect(() => {
        // First the total number of teachers
        axios
-       .get("http://localhost:8080/api/Teacher", {
+       .get("http://localhost:8080/api/teacherForm", {
          headers: {
            Authorization: authToken,
            "Content-Type": "application/json", // Set the Content-Type header
          },
        })
        .then((response) => {
-        // console.log('totalteacher',response.data)
+        console.log('totalteacher',response.data)
         setTotalTeachers(response.data.length); // Update the teacherList state with response data
        })
        .catch((error) => console.error("Error fetching teacher list:", error));
  
     // Fetch the total number of students
     axios
-      .get('http://localhost:8080/api/student', {
+      .get('http://localhost:8080/api/studentForm', {
         headers: {
           Authorization: authToken,
           'Content-Type': 'application/json',
         },
       })
       .then((response) => {
-        // console.log('totalstudent',response.data)
+        console.log('totalstudent',response.data)
         setTotalStudents(response.data.length);
       })
       .catch((error) => {
@@ -41,7 +41,6 @@ const Home = ({Toggle}) => {
   }, [authToken]);
   return (
     <div className=' px-3'>
-      <Navbar Toggle={Toggle}/>
       <div className='container-fluid'>
         <div className='row g-3 my-2'>
           <div className='col-md-3 p-1'>
@@ -86,4 +85,4 @@ const Home = ({Toggle}) => {
   )
 }
 
-export default Home
+export default Admin

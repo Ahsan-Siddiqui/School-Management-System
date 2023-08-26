@@ -1,0 +1,13 @@
+.add-class-container {
+    /* background-image: url('https://img.freepik.com/free-photo/organized-desk-with-copy-space_23-2148219270.jpg'); */
+    background-size: cover;
+    background-position: center;
+    /* min-height: 100vh;  */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;    
+    background-color: aliceblue;
+    padding: 20px;
+    margin-top: 50px;
+}
+

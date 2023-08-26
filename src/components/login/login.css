@@ -1,86 +1,35 @@
-
-.add-expense-btn button
-{
-    background-color: #333;
-    color: #000000;
-    font-weight: bold;
-    margin: 1rem .3rem;
-    padding: 1rem .3rem;
-    border: none;
-    border-radius: 8px;
-    width: 98%;
-    transition: .5s;
-    font-size: 20px;
-}
-.add-expense-btn button:hover
-{
-    background-color: #000;
-    color: #d1d1d1;
-    cursor: pointer;
-}
-.input-controls
-{
-    padding:4%;
-    width: 100%;
-    color: #fff;
-}
-.input-control
-{
-    width: 100%;
-    margin: .5rem 0;
-}
-.input-control label
-{
- display: block;
- font-weight: bold;
- margin-bottom: .4rem;
-}
-.input-control input
-{
- padding: 1rem 1rem;
- border: none;
- border-radius: 8px;
- background-color: #eee;
- width: 100%;   
- font-size: 20px;
-}
-.backgroundImage
-{
+.loginBackground {
     background: url('../../assets/images/mainbackground.jpg') no-repeat center center fixed;
     background-size: cover;
+    position: fixed;
     height: 100vh;
+    width: 100vw;
 }
-.loginForm
-{
+
+.loginClass {
     width: 600px;
-    /* height: 200px; */
-    margin: 0 aut;
+    margin: 0 auto;
     padding: 70px;
-    float:  right;
+    float: right;
     background-position: center;
 }
-.cardColor{
-    
-    background-color: #333;
-}
-.heading{
-    font-weight: bold;
-    text-align: center;
-    margin: 10px 0px;
-}
+
 @media screen and (max-width: 992px) {
-    .loginForm
-    {
-        width: 90%;
-        margin: 50% auto;
+    .loginBackground {
+        background: url('../../assets/images/mainbackground.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
     }
-    .input-control label,
-    .input-control input
-{
- font-size: 25px;
+
+    .loginClass {
+        width: 100%;
+        padding-top: 3%;
+        float: none;
+        margin-top: 20%;
+        background-position: none;
+    }
+    * {
+        font-size: 28px;
+    }
 }
-.backgroundImage
-{
-    background: none;
-}
-  }
