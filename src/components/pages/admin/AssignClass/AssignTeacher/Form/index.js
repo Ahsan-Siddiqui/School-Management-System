@@ -197,7 +197,17 @@ if (user.teachersEnroll.length === 0) {
       }
     }
   };
+//Date Lable Setting
+const handleFocus = (e) => {
+  e.currentTarget.type = "date";
+  e.currentTarget.click();
+};
 
+const handleBlur = (e) => {
+  if (!e.currentTarget.value) {
+      e.currentTarget.type = "text";
+  }
+};
   return (
     <div className="commonFormContainer">
       <h1>Assign Teachers</h1>
@@ -223,9 +233,13 @@ if (user.teachersEnroll.length === 0) {
           </FormControl>
 
           <FormControl sx={{ mt: 4, width: "100%" }}>
+
+          <InputLabel htmlFor="schedule">Teacher Assign Date</InputLabel>
             <Input
-              type="date"
+              type="text"
               name="schedule"
+              onFocus={handleFocus}
+              onBlur={handleBlur}
               onChange={handleChange}
               value={user.schedule}
               placeholder="Enter Date and Time"

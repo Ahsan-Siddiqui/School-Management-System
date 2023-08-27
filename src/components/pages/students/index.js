@@ -21,6 +21,17 @@ const StudentDashboard = () => {
       setTeacher(response.data);
     })
     .catch(error => console.error('Error fetching teacher details:', error));
+    axios.get('ttp://localhost:8080/api/assignments/', {
+      headers: {
+        Authorization: authToken,
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      console.log('assignments',response.data);
+      setTeacher(response.data);
+    })
+    .catch(error => console.error('Error fetching teacher details:', error));
   }, [authToken, user.userDetail.id]);
   return (
     <Container>

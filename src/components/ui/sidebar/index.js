@@ -31,6 +31,7 @@ const Sidebar = () => {
     { id: 2, title: "Create Profile", link: "/createProfile", icon: <PeopleIcon /> },
     { id: 1, title: "Dashboard", link: "/" },
     { id: 3, title: "Attendance", link: "/attendance" },
+    { id: 4, title: "Assignment", link: "/assignment" },
   ];
 
   return (

@@ -24,6 +24,7 @@ import AssignStudents from "./components/pages/admin/AssignClass/AssignStudent";
 import AssignTeachers from "./components/pages/admin/AssignClass/AssignTeacher";
 import StudentDashboard from "./components/pages/students";
 import Attendance from "./components/pages/teachers/Attendance";
+import Assignment from "./components/pages/teachers/Assignment";
 function App() {
   const [loginUser, setLoginUser] = useState({});
 
@@ -309,6 +310,21 @@ function App() {
                 <div className="col">
                   <Navbar Toggle={Toggle} />
                   <TeacherList />
+                </div>
+              </div>
+            </div>
+          </Route>
+          <Route path="/assignment">
+            <div className="container-fluid bg-secondary min-vh-100">
+              <div className="row">
+                {toggle && (
+                  <div className="col-2 bg-white">
+                    <Sidebar setLoginUser={setLoginUser} />
+                  </div>
+                )}
+                <div className="col">
+                  <Navbar Toggle={Toggle} />
+                  <Assignment/>
                 </div>
               </div>
             </div>

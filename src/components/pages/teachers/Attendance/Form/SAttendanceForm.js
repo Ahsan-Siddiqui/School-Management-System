@@ -132,27 +132,10 @@ const AssignTeacherClass = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "gradeName") {
-      setSelectedClass(value.gradeName); // Update the selected class
-
-      // Create an array of student objects with their IDs and names
-      const selectedStudentsInfo = selectedClassStudents.map((student) => ({
-        id: student._id,
-        firstname: student.firstname,
-        lastname: student.lastname,
-      }));
-
-      setUser((prevUser) => ({
-        ...prevUser,
-        [name]: value,
-        presentStudent: selectedStudentsInfo, // Update the presentStudent array
-      }));
-    } else {
-      setUser((prevUser) => ({
-        ...prevUser,
-        [name]: value,
-      }));
-    }
+    setUser({
+      ...user,
+      [name]: value,
+    });
   };
   const TakeAttendance = async (e) => {
     e.preventDefault();

@@ -22,3 +22,11 @@
     outline: none;
     cursor: pointer;
 }
+/* This styles the input field to make it appear like a label */
+/* input[type="text"] {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: text;
+    padding: 6px 0;
+} */

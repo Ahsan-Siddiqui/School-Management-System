@@ -17,7 +17,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
+  InputAdornment,
+  TextField
 } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 import axios from "axios";
 //for toast
@@ -27,6 +30,7 @@ const UserApproval = () => {
   const getUser = localStorage.getItem("userData");
   const users = JSON.parse(getUser);
   const authToken = users.saveToken;
+  const [searchQuery, setSearchQuery] = useState(""); // Add this state
 
   const [approveUser, setApproveUser] = useState([]);
   const [displayUsers, setDisplayUsers] = useState([]);
@@ -122,8 +126,15 @@ const UserApproval = () => {
         },
       })
       .then((response) => {
-        setDisplayUsers(response.data.users);
-        setApproveUser(response.data.users);
+        const users = response.data.users;
+
+        // Sort the users alphabetically by name
+        const sortedUsers = users
+          .slice()
+          .sort((a, b) => a.name.localeCompare(b.name));
+
+        setDisplayUsers(sortedUsers);
+        setApproveUser(sortedUsers);
       })
       .catch((error) => console.error("Error fetching teacher list:", error));
   }, [authToken]);
@@ -152,6 +163,22 @@ const UserApproval = () => {
       >
         Admin Approval User Profile
       </Typography>
+      <TextField
+      sx={{background:"white",mt:2}}
+        fullWidth
+        variant="outlined"
+        label="Search by name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        style={{ marginBottom: "20px",width:500 }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          )
+        }}
+      />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -167,49 +194,52 @@ const UserApproval = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredUsers.map((user, index) => (
-              <TableRow
-                key={user._id}
-                sx={{
-                  backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#ffffff",
-                }}
-              >
-                <TableCell>{index + 1}</TableCell>
-                <TableCell sx={{ textTransform: "capitalize" }}>
-                  {user.name}
-                </TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.role}</TableCell>
-                <TableCell>
-                  <Button
-                    sx={{ width: "60%", float: "right" }}
-                    variant="outlined"
-                    color={user.approved ? "primary" : "secondary"}
-                    onClick={() => handleToggle(user._id, user.approved)} // Make sure user.id is passed correctly
-                  >
-                    {user.approved ? "Approved" : "Pending"}
-                  </Button>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    // variant="outlined"
-                    variant="contained"
-                    // color="secondary"
-                    onClick={() => handleOpenConfirmDialog(user._id)}
-                    sx={{
-                      backgroundColor: "#d14242",
-                      color: "white",
-                      "&:hover": {
-                        backgroundColor: "#8f1010", // New hover color
-                      },
-                    }}
-
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {filteredUsers
+              .filter((user) =>
+                user.name.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((user, index) => (
+                <TableRow
+                  key={user._id}
+                  sx={{
+                    backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                  }}
+                >
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell sx={{ textTransform: "capitalize" }}>
+                    {user.name}
+                  </TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.role}</TableCell>
+                  <TableCell>
+                    <Button
+                      sx={{ width: "60%", float: "right" }}
+                      variant="outlined"
+                      color={user.approved ? "primary" : "secondary"}
+                      onClick={() => handleToggle(user._id, user.approved)} // Make sure user.id is passed correctly
+                    >
+                      {user.approved ? "Approved" : "Pending"}
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      // variant="outlined"
+                      variant="contained"
+                      // color="secondary"
+                      onClick={() => handleOpenConfirmDialog(user._id)}
+                      sx={{
+                        backgroundColor: "#d14242",
+                        color: "white",
+                        "&:hover": {
+                          backgroundColor: "#8f1010", // New hover color
+                        },
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
